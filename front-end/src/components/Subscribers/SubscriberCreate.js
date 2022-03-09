@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useCreatePostMutation } from "../../services/customerPost";
 import { Form, Col, Button } from "react-bootstrap";
 
-const EditUser = () => {
+const SubscriberCreate = () => {
   let [customerTOBeUpdated, setCustomerToBeUpdated] = useState({
     fullName: "",
     email: "",
@@ -102,4 +102,4 @@ const EditUser = () => {
   );
 };
 
-export default EditUser;
+export default SubscriberCreate;

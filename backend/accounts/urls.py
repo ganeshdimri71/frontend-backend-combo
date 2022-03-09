@@ -1,11 +1,22 @@
 from django.urls import include, path
-from .views import RegisterCreate, RegisterList, CustomerUpdate, RegisterDelete,RegisterDetail
+from .views import CustomerCreate, CustomerList, CustomerDetail, CustomerUpdate, CustomerDelete, SubscriberCreate, SubscriberList, SubscriberDetail, SubscriberUpdate, SubscriberDelete
 
 
 urlpatterns = [
-    path('create/', RegisterCreate.as_view(), name='create-register'),
-    path('list/', RegisterList.as_view()),
-    path('update/<int:pk>/', CustomerUpdate.as_view(), name='update-customer'),
-    path('delete/<int:pk>/', RegisterDelete.as_view(), name='delete-customer'),
-    path('customer/<int:pk>/', RegisterDetail.as_view(), name='retrieve-customer'),
+    path('create/', CustomerCreate.as_view(), name='customer-create'),
+    path('list/', CustomerList.as_view(),name="customer-list"),
+    path('detail/<int:pk>/', CustomerDetail.as_view(), name='customer-detail'),
+    path('update/<int:pk>/', CustomerUpdate.as_view(), name='customer-update'),
+    path('delete/<int:pk>/', CustomerDelete.as_view(), name='customer-delete'),
+
+
+    # subscriber urls
+    
+    
+    path('subscriber/create/', SubscriberCreate.as_view(), name='subscriber-create'),
+    path('subscriber/list/', SubscriberList.as_view(),name="subscriber-list"),
+    path('subscriber/detail/<int:pk>/', SubscriberDetail.as_view(), name='subscriber-detail'),
+    path('subscriber/update/<int:pk>/', SubscriberUpdate.as_view(), name='subscriber-update'),
+    path('subscriber/delete/<int:pk>/', SubscriberDelete.as_view(), name='subscriber-delete')
+
 ]

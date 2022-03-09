@@ -1,14 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // It is used to define our endpoints and allow to create the API slice
-export const postApi = createApi({
+export const customerPostApi = createApi({
   // The unique key that defines where the Redux store will store our cache.
-  reducerPath: "postApi",
+  reducerPath: "customerPostApi",
 
   // The base query to request data.
   // RTK Query ships with fetchBaseQuery, which is a lightweight fetch wrapper that automatically handles request headers and response parsing in a manner similar to common libraries like axios.
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://127.0.0.1:8000/accounts/",
+    baseUrl: "http://127.0.0.1:8000/accounts/"
   }),
 
   // The set of operations that we want to perform against the server.
@@ -105,4 +105,4 @@ export const {
   useDeletePostMutation,
   useCreatePostMutation,
   useUpdatePostMutation,
-} = postApi;
+} = customerPostApi;

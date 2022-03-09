@@ -92,11 +92,11 @@ WSGI_APPLICATION = 'm2d.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Morgan2D',
+        'NAME': 'Morgan2Design',
         'USER':'postgres',
         'PASSWORD':'morgan2d',
         'HOST':'localhost',
-        # 'PORT': '8003'
+        'PORT': '5432'
     }
 }
 

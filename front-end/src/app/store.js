@@ -1,16 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
-import { postApi } from '../services/post'
-import customerReducer from '../features/customerSlice'
+import { customerPostApi } from '../services/customerPost'
+import { subscriberPostApi } from '../services/subscriberPost'
+import customerAndSubscriberReducer from '../features/customerSlice'
 
 
 
 export const store = configureStore( {
     reducer: {
-        [ postApi.reducerPath ]: postApi.reducer,
-        customersData: customerReducer
+        [ customerPostApi.reducerPath ]: customerPostApi.reducer,
+        [ subscriberPostApi.reducerPath ]: subscriberPostApi.reducer,
+        customerAndSubscriberData: customerAndSubscriberReducer
     },
-    middleware: ( getDefaultMiddleware ) => getDefaultMiddleware().concat( postApi.middleware )
+    middleware: ( getDefaultMiddleware ) => getDefaultMiddleware().concat( customerPostApi.middleware ),
+    middleware: ( getDefaultMiddleware ) => getDefaultMiddleware().concat( subscriberPostApi.middleware ),
 } )
 
 

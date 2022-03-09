@@ -2,26 +2,26 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { setCustomerDataInRedux } from "../../features/customerSlice";
-import { useGetAllPostQuery, useDeletePostMutation } from "../../services/customerPost";
+import { setSubscriberDataInRedux } from "../../features/customerSlice";
+import { useGetAllPostQuery, useDeletePostMutation } from "../../services/subscriberPost";
 import { Button, Table, Row, Col } from "react-bootstrap";
 import { Link, useNavigate, Outlet } from "react-router-dom";
 
-const CustomerList = () => {
+const SubscriberList = () => {
   const { isLoading, isError } = useGetAllPostQuery(null, {
     pollingInterval: 600000,
   });
   const [deletePost] = useDeletePostMutation();
 
-  const allCustomerDataFromStore = useSelector(
-    (state) => state.customerAndSubscriberData.customerInformation
+  const allSubscriberDataFromStore = useSelector(
+    (state) => state.customerAndSubscriberData.subscriberInformation
   );
 
   let dispatch = useDispatch();
   let navigate = useNavigate();
 
-  const addCustomer = () => {
-    navigate(`/dashboard/customer/add`);
+  const addSubscriber = () => {
+    navigate(`/dashboard/subscriber/add`);
   };
 
   const onClickDeleteHandler = (id) => {
@@ -140,4 +140,4 @@ const CustomerList = () => {
   );
 };
 
-export default CustomerList;
+export default SubscriberList;

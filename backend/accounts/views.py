@@ -1,43 +1,63 @@
-# from pyexpat import model
-from django.shortcuts import render
-from rest_framework.decorators import api_view
-# Create your views here.
-from .models import Register
+#Lib Imports
+import imp
 from rest_framework import generics
-from .serializers import RegisterSerializer
+from django.shortcuts import render
+from django.contrib import messages
+from django.contrib.auth.models import User,auth
 
-from django.contrib.auth import get_user_model
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from django.http import HttpResponse, JsonResponse
+#Custom Imports
+from .models import Customers,Subscribers
+from .serializers import CustomerSerializer,SubscriberSerializer
 
+# Customer Views.
+class CustomerView:
+    queryset = Customers.objects.all()
+    serializer_class = CustomerSerializer
 
-class RegisterCreate(generics.CreateAPIView):
-    # API endpoint that allows creation of a new customer
-    queryset = Register.objects.all()
-    serializer_class = RegisterSerializer
-# @csrf_exempt
-
-class RegisterList(generics.ListAPIView):
-    queryset = Register.objects.all()
-    serializer_class = RegisterSerializer
-
-class RegisterDelete(generics.RetrieveDestroyAPIView):
-    # API endpoint that allows a customer record to be deleted.
-    queryset = Register.objects.all()
-    serializer_class = RegisterSerializer
-
-class CustomerUpdate(generics.RetrieveUpdateAPIView):
-    # API endpoint that allows a customer record to be updated.
-    queryset = Register.objects.all()
-    serializer_class = RegisterSerializer
-
-class RegisterDetail(generics.RetrieveAPIView):
-    # API endpoint that returns a single customer by pk.
-    queryset = Register.objects.all()
-    serializer_class = RegisterSerializer
-
-
-
-
+# API endpoint that allows creation of a new customer
+class CustomerCreate(CustomerView,generics.CreateAPIView):
+    pass
     
+# API endpoint that fetches the list of all customers
+class CustomerList(CustomerView,generics.ListAPIView):
+    pass
+
+# API endpoint that returns a single customer detail by pk (customer.id).
+class CustomerDetail(CustomerView,generics.RetrieveAPIView):
+    pass
+
+# API endpoint that allows a customer record to be updated.
+class CustomerUpdate(CustomerView,generics.RetrieveUpdateAPIView):
+    pass
+
+# API endpoint that allows a customer record to be deleted.
+class CustomerDelete(CustomerView,generics.RetrieveDestroyAPIView):
+    pass
+
+
+# subscriber
+
+# Subscriber Views.
+class SubscriberView:
+    queryset = Subscribers.objects.all()
+    serializer_class = SubscriberSerializer
+
+# API endpoint that allows creation of a new subscriber
+class SubscriberCreate(SubscriberView,generics.CreateAPIView):
+    pass
+    
+# API endpoint that fetches the list of all subscriber
+class SubscriberList(SubscriberView,generics.ListAPIView):
+    pass
+
+# API endpoint that returns a single subscriber detail by pk (subscriber.id).
+class SubscriberDetail(SubscriberView,generics.RetrieveAPIView):
+    pass
+
+# API endpoint that allows a subscriber record to be updated.
+class SubscriberUpdate(SubscriberView,generics.RetrieveUpdateAPIView):
+    pass
+
+# API endpoint that allows a subscriber record to be deleted.
+class SubscriberDelete(SubscriberView,generics.RetrieveDestroyAPIView):
+    pass
